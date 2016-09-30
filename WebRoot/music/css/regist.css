@@ -1,0 +1,42 @@
+.username,.passwords,.psw{
+height: 30px;
+width: 350px;
+}
+.vft{
+height: 30px;
+}
+#registered{
+background:url(../images/background4.jpg);
+padding-bottom: 100px;
+}
+#registered td{
+padding:5px 10px;
+}
+#registered table{
+width: 800px;
+margin: 0 auto;
+padding-top: 67px;
+}
+.sex input,.sex div{
+float:left;
+height: 25px
+}
+#registered .man{
+width: 25px;
+background: url(../images/background1.jpg) -519px -25px;
+}
+#registered .girl{
+width: 25px;
+background: url(../images/background1.jpg) -447px -25px;
+}
+.btn2{
+border:0 none;
+width:200px;
+padding:5px;
+background:#31c27c;
+font-size:16px;
+color:white;
+}
+.tis{
+width:290px;
+}
