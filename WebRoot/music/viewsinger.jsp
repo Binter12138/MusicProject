@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'viewsinger.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,9 +20,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    <a href="<c:url value='/SingerServlet?method=doPost'/>">点击</a>
+  ${errorname }<br/>
+  ${singername.singerName }
+  ${song }<br>
+  <c:forEach items="${songname }" var="str">
+  	${str.songname}
+  	${str.singername }<br/>
+  
+  </c:forEach>
   </body>
 </html>

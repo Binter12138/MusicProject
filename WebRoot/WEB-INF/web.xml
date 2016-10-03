@@ -17,6 +17,16 @@
     <servlet-name>VerCodeServlet</servlet-name>
     <servlet-class>cn.dfrz.mymusic.web.servlet.VerCodeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SingerServlet</servlet-name>
+    <servlet-class>cn.dfrz.mymusic.web.servlet.SingerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SongServlet</servlet-name>
+    <servlet-class>cn.dfrz.mymusic.web.servlet.SongServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -31,7 +41,26 @@
   <servlet-mapping>
     <servlet-name>VerCodeServlet</servlet-name>
     <url-pattern>/VerCodeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SingerServlet</servlet-name>
+    <url-pattern>/SingerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SongServlet</servlet-name>
+    <url-pattern>/SongServlet</url-pattern>
   </servlet-mapping>	
+  
+  
+    <filter>
+    <display-name>EncodingFilter</display-name>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>cn.dfrz.mymusic.web.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

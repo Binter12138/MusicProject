@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -17,7 +18,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript">
 	
+			
+			function singername()
+			{
+				var textname = document.getElementById("vvv").value;
+				var aaa = document.getElementById("aaa");
+				aaa.href = "<c:url value='/SongServlet?method=viewSong&singerName='/>"+textname;
+				
+			};
+		
+		
+
+	</script>
 
   </head>
   
@@ -30,8 +44,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</ul>
 	<div class="header_text">
-		<input type="text" class="text" value="陈奕迅"/>
-		<input type="button" class="btn">
+		
+		<input type="text" class="text" id="vvv" name="singerName" value=""/>
+		
+		<a class="btn" id="aaa" href="JavaScript:singername();"></a>
+		
 	</div>
 	<div class="login">
 		<ul>
