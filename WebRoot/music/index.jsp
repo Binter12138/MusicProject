@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:when>
 				<c:otherwise>
 					<li><h3>欢迎用户：${username }</h3></li>
-					<li><a href="javascript:;" id="out" class="header_a">退出</a></li>
+					<li><a href="<c:url value='/LoginServlet'/>" id="out" class="header_a">退出</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
@@ -78,10 +78,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="header_song">
 	<ul>
-		<li><a href="index.html" class="header_a">首页</a></li>
+		<li><a href="<c:url value='/music/index.jsp'/>" class="header_a">首页</a></li>
 		<li><a href="<c:url value='/SingerServlet?method=viewSinger'/>" class="header_a">歌手</a></li>
 		<li><a href="javascript:;" class="header_a">专辑</a></li>
-		<li><a href="ranking.html" class="header_a">排行榜</a></li>
+		<li><a href="<c:url value='/music/ranking.jsp'/>" class="header_a">排行榜</a></li>
 	</ul>
 </div>
 <div id="plate1">

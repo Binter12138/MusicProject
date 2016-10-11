@@ -17,7 +17,8 @@ public class LoginServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath()+"/music/index.jsp");
 	
 	}
 
@@ -38,9 +39,10 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			
-			request.setAttribute("username", form.getUsername());
-			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
-//			response.sendRedirect(request.getContextPath()+"/music/index.jsp");
+//			request.setAttribute("username", form.getUsername());
+			request.getSession().setAttribute("username", form.getUsername());
+//			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/music/index.jsp");
 		}
 		
 		

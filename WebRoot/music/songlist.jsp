@@ -18,14 +18,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link href="music/css/head.css" type="text/css" rel="Stylesheet" />
+	<script type="text/javascript">
+	
+			
+			function singername()
+			{
+				var textname = document.getElementById("vvv").value;
+				var aaa = document.getElementById("aaa");
+				aaa.href = "<c:url value='/SongServlet?method=viewSong&singerName='/>"+textname;
+				
+			};
+		
+		
 
+	</script>
 <style type="text/css">
 	#xuhao{
 		margin-left:600px;
 		margin-top:100px;
 	
 	}
-
+	#out{
+		
+			
+			position: absolute;
+			margin-top:-30px;
+			margin-left:174px;
+			border:0px;
+		}
 </style>
   </head>
   
@@ -34,27 +54,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<img src="music/images/logo.jpg" class="logo"/>
 	<ul class="header_ul">
 		<li class="li"><a href="javascript:;">音乐馆</a></li>
-		<li><a href="javascript:;" class="header_a">我的音乐</a></li>
+		<li><a href="<c:url value='/UserCollectionServlet?method=findUserCollection'/>" class="header_a">我的音乐</a></li>
 		
 	</ul>
 	<div class="header_text">
-		<input type="text" class="text" value=""/>
-		<input type="button" class="btn">
+		
+		<input type="text" class="text" id="vvv" name="singerName" value=""/>
+		
+		<a class="btn" id="aaa" href="JavaScript:singername();"></a>
+		
 	</div>
 	<div class="login">
 		<ul>
-			<li><a href="regist.html" class="header_a2">注册</a></li>
-			<li><a href="login.html" class="header_a">登入</a></li>
+			<c:choose>
+				<c:when test="${ empty username }">
+					<li><a href="music/regist.jsp" class="header_a2">注册</a></li>
+					<li><a href="music/login.jsp" class="header_a">登录</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><h3>欢迎用户：${username }</h3></li>
+					<li><a href="<c:url value='/LoginServlet'/>" id="out" class="header_a">退出</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 	</div>	
 </div>
 
+
 <div id="header_song">
 	<ul class="head">
-		<li><a href="index.html" class="header_a">首页</a></li>
-		<li><a href="javascript:;" class="header_a">歌手</a></li>
+		<li><a href="<c:url value='/music/index.jsp'/>" class="header_a">首页</a></li>
+		<li><a href="<c:url value='/SingerServlet?method=viewSinger'/>" class="header_a">歌手</a></li>
 		<li><a href="javascript:;" class="header_a">专辑</a></li>
-		<li><a href="ranking.html" class="header_a">排行榜</a></li>
+		<li><a href="<c:url value='/music/ranking.jsp'/>" class="header_a">排行榜</a></li>
 	</ul>
 </div>
 
