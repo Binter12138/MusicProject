@@ -1,0 +1,111 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>MyMusic查找的页面</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<link href="music/css/head.css" type="text/css" rel="Stylesheet" />
+
+<style type="text/css">
+	#xuhao{
+		margin-left:600px;
+		margin-top:100px;
+	
+	}
+
+</style>
+  </head>
+  
+  <body>
+    	<div id="header">
+	<img src="music/images/logo.jpg" class="logo"/>
+	<ul class="header_ul">
+		<li class="li"><a href="javascript:;">音乐馆</a></li>
+		<li><a href="javascript:;" class="header_a">我的音乐</a></li>
+		
+	</ul>
+	<div class="header_text">
+		<input type="text" class="text" value=""/>
+		<input type="button" class="btn">
+	</div>
+	<div class="login">
+		<ul>
+			<li><a href="regist.html" class="header_a2">注册</a></li>
+			<li><a href="login.html" class="header_a">登入</a></li>
+		</ul>
+	</div>	
+</div>
+
+<div id="header_song">
+	<ul class="head">
+		<li><a href="index.html" class="header_a">首页</a></li>
+		<li><a href="javascript:;" class="header_a">歌手</a></li>
+		<li><a href="javascript:;" class="header_a">专辑</a></li>
+		<li><a href="ranking.html" class="header_a">排行榜</a></li>
+	</ul>
+</div>
+
+	  
+	<div class="mod_songlist">
+		 <ul class="songlist_header">
+			<li class ="songlist_header_number">序号</li>
+			<li class ="songlist_header_name">歌手</li>
+			<li class ="songlist_header_author">歌名</li>
+			<li class ="songlist_header_time">时长</li>
+			</ul>
+		
+			<div class ="aaa">
+				 
+		  	
+	<c:forEach items="${songname }" var="str">
+		  	
+		  <div class="songlist__number  songlist__number--top">1</div>
+		  			   
+		 <div class="a">
+		<p class="songlist__songname_txt" >${str.singername }</p>
+		</div>
+		 <div class="songlist__artist">
+		   <p class="singer_name" style="text-align:left">${str.songname}</p>
+		  </div>
+		   <!--图标-->
+		 <div class="mod_list_menu">
+		<a href="<c:url value='/music/play.jsp?path=${str.path }&songname=${str.songname}&singername=${str.singername }'/>"><img class="play"src="music/images/play48.png"/></a>
+		<a href="<c:url value='/UserCollectionServlet?method=collection&songname=${str.songname}&singername=${str.singername }'/>"><img class="play" src="music/images/plus49.png"/></a>
+		<a href="#"><img class="play" src="music/images/download.png"/></a>
+		 </div>
+		 <div class="songlist__time">03:05</div>
+		
+ 	 </c:forEach>
+
+		 </div>
+			
+	<div id="xuhao">
+	<a href="#">1</a>
+	<a href="#">2</a>
+	<a href="#">3</a>
+	<a href="#">4</a>
+	<a href="#">5</a>
+	<a href="#">下一页</a>
+	<a href="#">尾页</a>
+	</div>
+</div>
+<div id="footer">
+	<div>本网站属于私人定制网站----由cy、czb、ltj、lzc制作而成</div>
+</div>
+<script type="text/javascript" src="music/js/jquery.min.js"></script>
+<script type="text/javascript" src="music/js/header.js"></script>
+  </body>
+</html>

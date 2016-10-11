@@ -32,5 +32,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	${str.singername }<br/>
   
   </c:forEach>
+  <hr>
+  ${usercoll }
+  <c:forEach items="${userCollection }" var="ss">
+  	${ss.songname }
+  	${ss.singername }<br>
+  
+  </c:forEach>
   </body>
 </html>

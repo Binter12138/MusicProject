@@ -37,7 +37,10 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/music/login.jsp").forward(request, response);
 		}
 		else {
-			response.sendRedirect(request.getContextPath()+"/music/index.jsp");
+			
+			request.setAttribute("username", form.getUsername());
+			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
+//			response.sendRedirect(request.getContextPath()+"/music/index.jsp");
 		}
 		
 		

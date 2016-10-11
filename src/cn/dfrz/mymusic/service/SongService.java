@@ -24,4 +24,11 @@ public class SongService {
 		songDaoImpl.addsong(song);
 	}
 
+	public Song findSongName(String songName)
+	{
+		Song song = songDaoImpl.findSongName(songName);
+		if(song == null)return null;
+		return song;
+		
+	}
 }

@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-validator.Checked=WebRoot/music/js/jquery.min.js
+validator.Checked=WebRoot/music/js/jquery.min.js,WebRoot/music/manager/js/jquery-1.6.min.js
 validator.Unchecked=

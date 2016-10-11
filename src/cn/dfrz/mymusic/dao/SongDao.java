@@ -20,4 +20,9 @@ public interface SongDao {
 	public void addsong(Song song);
 
 
+	/**
+	 * 查找歌曲
+	 * @param songName
+	 */
+	public Song findSongName(String songName);
 }

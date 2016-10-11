@@ -1,5 +1,7 @@
 package cn.dfrz.mymusic.service;
 
+import java.util.List;
+
 import cn.dfrz.mymusic.dao.impl.SingerDaoImpl;
 import cn.dfrz.mymusic.entity.Singer;
 
@@ -21,4 +23,9 @@ public class SingerService {
 		singerDaoImpl.addSinger(singer);
 	}
 	
+	public List<Singer> find()
+	{
+		return singerDaoImpl.find();
+		
+	}
 }

@@ -74,8 +74,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="footer">
 	<div>本网站属于私人定制网站----由cy、czb、ltj、lzc制作而成</div>
 </div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/header.js"></script>
+<script type="text/javascript" src="music/js/jquery.min.js"></script>
+<script type="text/javascript" src="music/js/header.js"></script>
 </body>
 
 </html>

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.dfrz.mymusic.dao.SingerDao;
 import cn.dfrz.mymusic.entity.Singer;
@@ -87,6 +89,42 @@ public class SingerDaoImpl implements SingerDao{
 		}
 		
 		
+	}
+
+	public List<Singer> find() {
+		List<Singer> singerList = new ArrayList<Singer>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "select *from music_singer";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Singer singer = new Singer();
+				singer.setSingername(rs.getString("singername"));
+				singerList.add(singer);
+			}
+			return singerList;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con !=null)con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return null;
 	}
 
 }

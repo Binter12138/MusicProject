@@ -1,5 +1,7 @@
 package cn.dfrz.mymusic.dao;
 
+import java.util.List;
+
 import cn.dfrz.mymusic.entity.Singer;
 
 public interface SingerDao {
@@ -16,5 +18,11 @@ public interface SingerDao {
 	 * @param singer
 	 */
 	public void addSinger(Singer singer);
+	
+	/**
+	 * 查找所有歌手
+	 * @return
+	 */
+	public List<Singer> find();
 	
 }

@@ -25,6 +25,11 @@
     <servlet-name>SongServlet</servlet-name>
     <servlet-class>cn.dfrz.mymusic.web.servlet.SongServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UserCollectionServlet</servlet-name>
+    <servlet-class>cn.dfrz.mymusic.web.servlet.UserCollectionServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -49,6 +54,10 @@
   <servlet-mapping>
     <servlet-name>SongServlet</servlet-name>
     <url-pattern>/SongServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserCollectionServlet</servlet-name>
+    <url-pattern>/UserCollectionServlet</url-pattern>
   </servlet-mapping>	
   
   

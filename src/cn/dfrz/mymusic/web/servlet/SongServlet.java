@@ -45,21 +45,31 @@ public class SongServlet extends HttpServlet {
 			request.getRequestDispatcher("/music/viewsinger.jsp").forward(request, response);
 		}
 		else {
+			
 			request.setAttribute("songname", songList);
-			request.getRequestDispatcher("/music/viewsinger.jsp").forward(request, response);
+			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
 		}
-		
+
 	}
 	public void addSong(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			request.setCharacterEncoding("utf-8");
 			response.setContentType("text/html;charset=utf-8");
-			Song song = CommonUtils.toBean(request.getParameterMap(), Song.class);
-			songService.addsong(song);
-//			request.setAttribute("mes", "添加成功");
-			response.getWriter().print("<script>alert('添加成功')</script>");
-			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
 			
+			String songName = request.getParameter("songname");
+			Song songname = songService.findSongName(songName);
+			if(songname == null)
+			{
+				Song song = CommonUtils.toBean(request.getParameterMap(), Song.class);
+				songService.addsong(song);
+				request.getRequestDispatcher("/music/index.jsp").forward(request, response);
+				return;
+			}
+			else{
+				request.setAttribute("songname", "该歌曲已经存在");
+				request.getRequestDispatcher("/music/manager/addsong.jsp").forward(request, response);
+				
+			}
 	}
 	
 
