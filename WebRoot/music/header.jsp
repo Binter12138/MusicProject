@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'header.jsp' starting page</title>
+    
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,11 +19,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<link href="music/css/header.css" type="text/css" rel="Stylesheet" />
+	<script type="text/javascript">
 	
+			
+			function singername()
+			{
+				var textname = document.getElementById("vvv").value;
+				var aaa = document.getElementById("aaa");
+				aaa.href = "<c:url value='/SongServlet?method=viewSong&singerName='/>"+textname;
+				
+			};
+		
+		
+
+	</script>
+	<style type="text/css">
+		#out{
+		
+			
+			position: absolute;
+			margin-top:-30px;
+			margin-left:174px;
+			border:0px;
+		}
+	
+	</style>
 	
   </head>
-  
- <div id="header">
+  <body>
+<div id="header">
 	<img src="music/images/logo.jpg" class="logo"/>
 	<ul class="header_ul">
 		<li class="li"><a href="javascript:;">音乐馆</a></li>
@@ -41,12 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<ul>
 			<c:choose>
 				<c:when test="${ empty username }">
-					<li><a href="<c:url value='/music/regist.jsp'/>" class="header_a2">注册</a></li>
-					<li><a href="<c:url value='/music/login.jsp'/>" class="header_a">登录</a></li>
+					<li><a href="music/regist.jsp" class="header_a2">注册</a></li>
+					<li><a href="music/login.jsp" class="header_a">登录</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><h3>欢迎用户：${username }</h3></li>
-					<li><a href="javascript:;" id="out" class="header_a">退出</a></li>
+					<li><a href="<c:url value='/LoginServlet'/>" id="out" class="header_a">退出</a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

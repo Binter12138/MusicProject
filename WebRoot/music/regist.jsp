@@ -1,9 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@include file="header.jsp" %>
+
 <html>
 <head>
  <base href="<%=basePath%>">
@@ -165,24 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
 </head>
 <body>
-<div id="header">
-	<img src="music/images/logo.jpg" class="logo"/>
-	<ul class="header_ul">
-		<li class="li"><a href="javascript:;">音乐馆</a></li>
-		<li><a href="javascript:;" class="header_a">我的音乐</a></li>
-		
-	</ul>
-	<div class="header_text">
-		<input type="text" class="text" value=""/>
-		<input type="button" class="btn">
-	</div>
-	<div class="login">
-		<ul>
-			<li><a href="music/regist.jsp" class="header_a2">注册</a></li>
-			<li><a href="music/login.jsp" class="header_a">登录</a></li>
-		</ul>
-	</div>	
-</div>
+
 
 <div id="header_song">
 	<ul>
