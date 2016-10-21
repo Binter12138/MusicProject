@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</ul>
 	</div>
 	<div id="addsinger">
-		<form  action="<c:url value='/SingerServlet?method=addSinger'/>" id="formid"  name= "myform" method = 'post' onsubmit = "return checkUser();" >
+		<form  action="<c:url value='/SingerServlet?method=addSinger'/>" id="formid"  name= "myform" method = 'post' onsubmit = "return checkUser();" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>歌手</td>

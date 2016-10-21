@@ -1,0 +1,60 @@
+#singers_model{
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#e8eae9,endColorStr=#ffffff); /*IE*/ 
+	background:-moz-linear-gradient(top,#e8eae9,#ffffff);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#e8eae9), to(#ffffff));/*谷歌*/ 
+	background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #e8eae9),color-stop(1, #ffffff));/* Safari & Chrome*/ 
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8eae9', endColorstr='#ffffff'); /*IE6 & IE7*/ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8eae9', endColorstr='#ffffff')"; /* IE8 */
+}
+#music_songers{
+	width:1200px;
+	margin:0 auto;
+	position:relative;
+}
+h1{
+	padding-top: 60px;
+    padding-bottom: 30px;
+}
+.singer_list_txt{
+	padding-top:20px;
+	padding-bottom:20px;
+	
+}
+.singer_txt{
+	width:240px;
+	height: 300px;
+	float:left;
+	position:relative;
+}
+.singer_txt img{
+	width:200px;
+	height:200px;
+	border-radius:50%;	
+}
+.singer_txt h3{
+	padding-top:20px;
+}
+.singer_txt h3 a{
+	color: black;
+}
+#singers_chose{
+	padding-bottom: 30px;
+}
+#singers_chose a{
+    padding-right: 49px;
+    color: black;
+}
+.singer_text {
+	width:240px;
+	height: 40px;
+	float:left;
+	position:relative;
+	
+}
+.singer_text a{
+	color:black;
+}
+
+.bottom_foot{
+	padding-bottom:60px;
+}

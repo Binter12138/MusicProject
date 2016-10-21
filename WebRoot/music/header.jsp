@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<img src="music/images/logo.jpg" class="logo"/>
 	<ul class="header_ul">
 		<li class="li"><a href="javascript:;">音乐馆</a></li>
-		<li><a href="<c:url value='/UserCollectionServlet?method=findUserCollection'/>" class="header_a">我的音乐</a></li>
+		<li><a href="<c:url value='/UserCollectionServlet?method=findUserCollection&username=${username }'/>" class="header_a">我的音乐</a></li>
 		
 	</ul>
 	<div class="header_text">
@@ -75,6 +75,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</c:choose>
 		</ul>
 	</div>	
+</div>
+<div id="header_song">
+	<ul>
+		<li><a href="<c:url value='/music/index.jsp'/>" class="header_a">首页</a></li>
+		<li><a href="<c:url value='/SingerServlet?method=viewSinger'/>" class="header_a">歌手</a></li>
+		<li><a href="<c:url value='/AlbumServlet'/>" class="header_a">专辑</a></li>
+		<li><a href="<c:url value='/music/ranking.jsp'/>" class="header_a">排行榜</a></li>
+	</ul>
 </div>
   </body>
  

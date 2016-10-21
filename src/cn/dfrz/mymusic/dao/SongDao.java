@@ -25,4 +25,12 @@ public interface SongDao {
 	 * @param songName
 	 */
 	public Song findSongName(String songName);
+	
+	
+	/**
+	 * 按专辑名查找歌曲
+	 * @param albumname
+	 * @return
+	 */
+	public List<Song> findAlbum(String albumname);
 }

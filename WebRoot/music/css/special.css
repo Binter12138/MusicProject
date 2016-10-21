@@ -1,0 +1,81 @@
+#plate3{
+	position:relative;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#e8eae9,endColorStr=#ffffff); /*IE*/ 
+	background:-moz-linear-gradient(top,#e8eae9,#ffffff);/*火狐*/ 
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#e8eae9), to(#ffffff));/*谷歌*/ 
+	background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #e8eae9),color-stop(1, #ffffff));/* Safari & Chrome*/ 
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8eae9', endColorstr='#ffffff'); /*IE6 & IE7*/ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e8eae9', endColorstr='#ffffff')"; /* IE8 */
+}
+#plate3_1 {
+	width:1200px;
+	margin:0 auto;
+}
+#plate3 h1{
+	padding-top: 60px;
+    padding-bottom: 40px;
+}
+.table dt img{
+	margin:0 auto;
+	width:260px;
+	height:260px;
+}
+.table{
+	width:1200px;
+	margin:0 auto;
+	position:relative;
+}
+.table dl{
+	
+	float:left;
+	position: relative;
+}
+.table dt{
+	height:280px;
+}
+.table dt,.table dd{
+	width:300px;
+	position: relative;
+}
+.table dd{
+	height: 28px;
+    letter-spacing: 5px;
+	color:#b9b9b9;
+	font-size: 14px;
+}
+.table dd a{
+	color:black;
+}
+.table .singer a{
+	color:#b9b9b9
+}
+#plate3>h1{
+	padding-top: 50px;
+    padding-bottom: 30px;
+}
+.txt{
+    width: 260px;
+    background:url(../images/play.png) no-repeat 100px 100px #333;
+	text-align:center;
+    position: absolute;
+    left: 0;
+	top: 0;
+	filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+	-moz-opacity:0.5; /*Firefox私有，透明度50%*/
+	opacity:0.5;/*其他，透明度50%*/
+    
+}
+.bottom_foot{
+	padding-bottom:60px;
+}
+.bottom_foot a{
+    font-size: 20px;
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+    padding: 0 21px;
+    box-sizing: border-box;
+    min-width: 24px;
+	color: #b9b9b9;
+    font-weight: 900;
+}

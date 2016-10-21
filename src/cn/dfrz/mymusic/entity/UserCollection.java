@@ -1,14 +1,14 @@
 package cn.dfrz.mymusic.entity;
 
 public class UserCollection {
-	private int collId;
+	private String username;
 	private String songname;
 	private String singername;
-	public int getCollId() {
-		return collId;
+	public String getUsername() {
+		return username;
 	}
-	public void setCollId(int collId) {
-		this.collId = collId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getSongname() {
 		return songname;
@@ -24,19 +24,19 @@ public class UserCollection {
 	}
 	@Override
 	public String toString() {
-		return "UserCollection [collId=" + collId + ", songname=" + songname
-				+ ", singername=" + singername + "]";
+		return "UserCollection [username=" + username + ", songname="
+				+ songname + ", singername=" + singername + "]";
 	}
-	public UserCollection(int collId, String songname, String singername) {
+	public UserCollection(String username, String songname, String singername) {
 		super();
-		this.collId = collId;
+		this.username = username;
 		this.songname = songname;
 		this.singername = singername;
 	}
 	public UserCollection() {
 		super();
 	}
-
+	
 	
 	
 

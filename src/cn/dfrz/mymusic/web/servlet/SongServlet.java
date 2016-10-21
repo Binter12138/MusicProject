@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.dfrz.mymusic.entity.Singer;
 import cn.dfrz.mymusic.entity.Song;
+import cn.dfrz.mymusic.service.SingerService;
 import cn.dfrz.mymusic.service.SongService;
 import cn.itcast.commons.CommonUtils;
 
@@ -26,6 +28,10 @@ public class SongServlet extends HttpServlet {
 		}else if(methodName.equals("addSong")){
 			addSong(request, response);
 		}
+		else if(methodName.equals("viewalbumsong"))
+		{
+			viewalbumsong(request, response);
+		}
 		
 	}
 	
@@ -36,8 +42,8 @@ public class SongServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		//get提交处理乱码问题
-		String singerName=request.getParameter("singerName");
 		
+		String singerName=request.getParameter("singerName");
 		List<Song> songList = songService.findsong(singerName);
 		if(songList.isEmpty())
 		{
@@ -47,9 +53,10 @@ public class SongServlet extends HttpServlet {
 		else {
 			
 			request.setAttribute("songname", songList);
+			request.setAttribute("singern", singerName);
 			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
 		}
-
+	
 	}
 	public void addSong(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -71,6 +78,23 @@ public class SongServlet extends HttpServlet {
 				
 			}
 	}
+	public void viewalbumsong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+			String albumname = request.getParameter("albumname");
+			List<Song> songList = songService.findAlbum(albumname);
+			if(songList.isEmpty())
+			{
+				request.setAttribute("message", "该专辑没有歌曲");
+			}
+			else
+			{
+				request.setAttribute("message", songList);
+				request.getRequestDispatcher("/music/albumsong.jsp").forward(request, response);
+			}
+	}
+	
 	
 
 }

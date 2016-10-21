@@ -14,11 +14,19 @@ public class UserCollectionService {
 	}
 	
 
-	public List<UserCollection> findUserCollection()
+	public List<UserCollection> findUserCollection(String username)
 	{
-		List<UserCollection> ucList = collectionDaoImpl.findUserCollection();
+		List<UserCollection> ucList = collectionDaoImpl.findUserCollection(username);
 		if(ucList == null)
 		return null;
 		return ucList;
+	}
+	
+	public UserCollection findSongName(String songname,String username)
+	{
+		UserCollection collection = collectionDaoImpl.findSongName(songname,username);
+		if(collection == null)return null;
+		return collection;
+		
 	}
 }

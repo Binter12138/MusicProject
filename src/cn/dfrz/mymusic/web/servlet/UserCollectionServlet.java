@@ -28,11 +28,31 @@ public class UserCollectionServlet extends HttpServlet {
 	}
 	public void collection(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		String username = request.getParameter("username");
 		String songname = request.getParameter("songname");
 		String singername = request.getParameter("singername");
-		UserCollection userCollection = new UserCollection(1, songname, singername);
-		service.addUserCollection(userCollection);
-//		request.getRequestDispatcher("/music/viewsinger").forward(request, response);
+		if(username.isEmpty())
+		{
+			response.sendRedirect(request.getContextPath()+"/music/login.jsp");
+		}
+		else{
+			
+			UserCollection collection = service.findSongName(songname,username);
+			if(collection == null )
+			{
+				UserCollection userCollection = new UserCollection(username, songname, singername);
+				
+				service.addUserCollection(userCollection);
+				
+				response.sendRedirect(request.getContextPath()+"/music/index.jsp");
+			}else{
+				
+				response.getWriter().write("<script>alert('该歌曲已经收藏过了')</script>");
+				
+			}
+			
+		}
 		
 	
 	}
@@ -40,16 +60,17 @@ public class UserCollectionServlet extends HttpServlet {
 	public void findUserCollection(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
-		List<UserCollection> ucList = service.findUserCollection();
-		if(ucList.isEmpty())
+		String username = request.getParameter("username");
+		List<UserCollection> ucList = service.findUserCollection(username);
+		
+		if(username.isEmpty())
 		{
-			request.setAttribute("usercoll", "您还没有收藏歌曲");
-			request.getRequestDispatcher("/music/viewsinger.jsp").forward(request, response);
-			return;
+
+			response.sendRedirect(request.getContextPath()+"/music/login.jsp");
 		}
 		else{
 			request.setAttribute("userCollection", ucList);
-			request.getRequestDispatcher("/music/viewsinger.jsp").forward(request, response);
+			request.getRequestDispatcher("/music/collection.jsp").forward(request, response);
 		}
 		
 	}

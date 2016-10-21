@@ -17,5 +17,12 @@ public interface UserCollectionDao {
 	 * @param songname
 	 * @return
 	 */
-	public List<UserCollection> findUserCollection();
+	public List<UserCollection> findUserCollection(String username);
+	
+	/**
+	 * 查找歌曲是否存在
+	 * @param songname
+	 * @return
+	 */
+	public UserCollection findSongName(String songname,String username);
 }

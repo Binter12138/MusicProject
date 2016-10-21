@@ -30,7 +30,7 @@ $(function(){
 	});
 	function choose(i){
 		$(".slide li").each(function(index){
-			$(this).children().children().attr("src","images/"+i[index]+".png")
+			$(this).children().children().attr("src","music/images/"+i[index]+".png")
 		
 		})
 	
@@ -168,7 +168,7 @@ $(function(){
 	
 	function changing(i){
 		$(".table dt").each(function(index){
-			$(this).children().children().attr("src","images/"+i[index]+".png");
+			$(this).children().children().attr("src","music/images/"+i[index]+".png");
 		})
 	
 	}

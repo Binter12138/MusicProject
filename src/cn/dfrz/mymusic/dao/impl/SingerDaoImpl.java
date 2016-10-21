@@ -105,6 +105,8 @@ public class SingerDaoImpl implements SingerDao{
 			{
 				Singer singer = new Singer();
 				singer.setSingername(rs.getString("singername"));
+				singer.setSingerimage(rs.getString("singerimage"));
+				singer.setSingerinfo(rs.getString("singerinfo"));
 				singerList.add(singer);
 			}
 			return singerList;

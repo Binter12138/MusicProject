@@ -1,16 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@include file="../header.jsp" %>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'viewsinger.jsp' starting page</title>
+    <title>添加专辑</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,25 +18,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style type="text/css">
+	div{
+		margin-left:500px ;
+		margin-top:100px;
+	
+	}
+	</style>
 
   </head>
   
   <body>
-  ${errorname }<br/>
-  ${singername.singerName }
-  ${song }<br>
-  <c:forEach items="${songname }" var="str">
-  	${str.songname}
-  	${str.singername }<br/>
-  
-  </c:forEach>
-  <hr>
-  ${usercoll }
-  <c:forEach items="${userCollection }" var="ss">
-  	${ss.songname }
-  	${ss.singername }<br>
-  
-  </c:forEach>
-  
+	  <div>
+		  <form action="<c:url value='/AlbumServlet'/>" method="post" enctype="multipart/form-data">
+			  专辑名称:<input type="text" name="album"/><br/>
+			  歌手名:<input type="text" name="singername"/><br>
+			  专辑图片:<input type="file" value="选择图片" name="albumimage"/><br>
+		  			<input type="submit" value="添加"/>
+		  </form>
+	  </div>
   </body>
 </html>

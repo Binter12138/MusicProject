@@ -19,10 +19,11 @@ public class UserCollectionDaoImpl implements UserCollectionDao{
 		PreparedStatement pstmt = null;
 		try {
 			con = JdbcUtils.getConnection();
-			String sql = "insert into music_collection(songname,singername) value(?,?)";
+			String sql = "insert into music_collection value(?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, uc.getSongname());
-			pstmt.setString(2, uc.getSingername());
+			pstmt.setString(1, uc.getUsername());
+			pstmt.setString(2, uc.getSongname());
+			pstmt.setString(3, uc.getSingername());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,15 +76,17 @@ public class UserCollectionDaoImpl implements UserCollectionDao{
 		return null;
 	}
 
-	public List<UserCollection> findUserCollection() {
+	public List<UserCollection> findUserCollection(String username) {
 		List<UserCollection> ucList = new ArrayList<UserCollection>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = JdbcUtils.getConnection();
-			String sql = "select *from music_collection";
+			String sql = "SELECT c.* FROM music_user u,music_collection c WHERE c.username=u.username AND c.username=?";
+			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, username);
 			rs = pstmt.executeQuery();
 			while(rs.next())
 			{
@@ -110,6 +113,43 @@ public class UserCollectionDaoImpl implements UserCollectionDao{
 		}
 		return null;
 		
+	}
+
+	public UserCollection findSongName(String songname,String username) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con =JdbcUtils.getConnection();
+			String sql = "select *from music_collection where songname=? and username=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, songname);
+			pstmt.setString(2, username);
+			
+			rs = pstmt.executeQuery();
+			if(!rs.next())return null;
+			UserCollection userCollection = new UserCollection();
+			userCollection.setSongname(rs.getString("username"));
+			userCollection.setSongname(rs.getString("songname"));
+			userCollection.setSingername(rs.getString("singername"));
+			return userCollection;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally 
+		{
+			try {
+				if(rs != null)rs.close();
+				if(pstmt != null)pstmt.close();
+				if(con != null)con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return null;
 	}
 
 	

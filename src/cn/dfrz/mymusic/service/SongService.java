@@ -31,4 +31,11 @@ public class SongService {
 		return song;
 		
 	}
+	
+	public List<Song> findAlbum(String albumname){
+		List<Song> songList = songDaoImpl.findAlbum(albumname);
+		if(songList == null)return null;
+		return songList;
+		
+	}
 }

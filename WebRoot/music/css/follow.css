@@ -1,0 +1,111 @@
+#follow_model{
+height:380px;
+background:url(../images/bg1.jpg);
+}
+#follow_model li img{
+width: 120px;
+height: 120px;
+border-radius: 50%;
+border: 3px white solid;
+margin-top: 50px;
+}
+#follow_model .myname{
+font-size: 30px;
+font-weight: 900;
+padding-top: 16px;
+padding-bottom: 20px;
+}
+#follow_model center{
+color: wheat;
+}
+#follow_model center a{
+color: white;
+}
+#iframe{
+width:1250px;
+margin:0 auto;
+}
+
+
+
+#follow_model1 ul{
+padding-left:20px;
+}
+#follow_model1 li {
+width: 150px;
+display: inline-block;
+padding:20px
+}
+#follow_model1 li img{
+width:150px;
+height:150px;
+border-radius: 50%;
+}
+#follow_model1 li center{
+padding: 20px;
+}
+#follow_model1 a{
+text-decoration: blink;
+color:#808080;
+font-size: 18px;
+}
+#follow_model1 h2{margin-left: 36px;}
+
+
+ h2{
+margin-top: 20px;
+}
+.song_table table{
+width:1200px;
+}
+.song_table tr:nth-child(odd) {
+	background:#f7f8f8;
+}
+.song_table tr td{
+	width:500px;
+	color:black;
+	height: 43px;
+	color:#cacaca;
+}
+.song_table td a{
+	color:#423a3a;
+}
+.song_table .slogo{
+	width:135px;
+	height:40px;
+	position:absolute;
+	background:url(../images/background1.jpg) -13px -87px;
+	margin: -29px 0 0 360px;
+	display: none
+}
+.song_table .slogo1,.song_table .slogo2,.song_table .slogo3{
+	width:45px;
+	height:40px;
+	position:absolute;
+	opacity:0;
+	
+}
+.song_table .slogo1{
+	background:url(../images/background1.jpg) -13px -150px;;
+	
+}
+.song_table .slogo2{
+	background:url(../images/background1.jpg) -60px -151px;;
+	margin-left: 45px;
+
+}
+.song_table .slogo3{
+	background:url(../images/background1.jpg) -103px -153px;;
+	margin-left:90px;
+
+}
+.song_table tr th{
+	font-weight:100;
+	text-align:left;
+	color:#cacaca;
+}
+
+.song_table tr th:first-child{
+	width:48px;
+	text-align:center;
+}

@@ -23,14 +23,7 @@
  <body>
 
 
-<div id="header_song">
-	<ul class="head">
-		<li><a href="<c:url value='/music/index.jsp'/>" class="header_a">首页</a></li>
-		<li><a href="<c:url value='/SingerServlet?method=viewSinger'/>" class="header_a">歌手</a></li>
-		<li><a href="javascript:;" class="header_a">专辑</a></li>
-		<li><a href="<c:url value='/music/ranking.jsp'/>" class="header_a">排行榜</a></li>
-	</ul>
-</div>
+
 <div id="ranking">
 	<div  class="mod_toplist">
 		<div class="toplist__hd">

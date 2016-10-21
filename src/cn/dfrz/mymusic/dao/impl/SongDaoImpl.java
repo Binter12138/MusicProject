@@ -126,6 +126,43 @@ public class SongDaoImpl implements SongDao{
 		
 		
 	}
+
+	public List<Song> findAlbum(String albumname) {
+		List<Song> songList = new ArrayList<Song>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "SELECT songname,singername,songpath,songalbum FROM music_song WHERE songalbum=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, albumname);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Song song = new Song();
+				song.setSongname(rs.getString("songname"));
+				song.setSingername(rs.getString("singername"));
+				song.setPath(rs.getString("songpath"));
+				song.setAlbum(rs.getString("songalbum"));
+				songList.add(song);
+				
+			}
+			return songList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally
+		{
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con !=null)con.close();
+				if(rs != null)rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 	
 	
 

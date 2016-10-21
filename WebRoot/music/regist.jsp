@@ -165,14 +165,7 @@
 <body>
 
 
-<div id="header_song">
-	<ul>
-		<li><a href="music/index.jsp" class="header_a">首页</a></li>
-		<li><a href="javascript:;" class="header_a">歌手</a></li>
-		<li><a href="javascript:;" class="header_a">专辑</a></li>
-		<li><a href="javascript:;" class="header_a">排行榜</a></li>
-	</ul>
-</div>
+
 <div id="registered">
 	<form id="formid"  name= "myform" method = 'post'  action = "<c:url value='/RegistServlet'/>" onsubmit = "return checkUser();" >
 	<input type="hidden" name="action" value="regist" />

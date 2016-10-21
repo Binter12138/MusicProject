@@ -21,14 +21,7 @@
  <body>
 
 
-<div id="header_song">
-	<ul>
-		<li><a href="music/index.jsp" class="header_a">首页</a></li>
-		<li><a href="javascript:;" class="header_a">歌手</a></li>
-		<li><a href="javascript:;" class="header_a">专辑</a></li>
-		<li><a href="javascript:;" class="header_a">排行榜</a></li>
-	</ul>
-</div>
+
 <div id="login">
 	<form id="formid"  name= "myform" method = 'post'  action = "<c:url value='/LoginServlet'/>" onsubmit = "return checkUser();" >
 		<table  width="100%" border="0">
