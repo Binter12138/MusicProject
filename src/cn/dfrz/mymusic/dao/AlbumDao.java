@@ -24,4 +24,11 @@ public interface AlbumDao {
 	 * @return
 	 */
 	public List<Album> find();
+	
+	
+	/**
+	 * 删除专辑
+	 * @param albumname
+	 */
+	public void delAlbum(String albumname);
 }

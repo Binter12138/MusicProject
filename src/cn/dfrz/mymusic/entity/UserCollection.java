@@ -4,6 +4,7 @@ public class UserCollection {
 	private String username;
 	private String songname;
 	private String singername;
+	private String songpath;
 	public String getUsername() {
 		return username;
 	}
@@ -22,16 +23,25 @@ public class UserCollection {
 	public void setSingername(String singername) {
 		this.singername = singername;
 	}
+	public String getSongpath() {
+		return songpath;
+	}
+	public void setSongpath(String songpath) {
+		this.songpath = songpath;
+	}
 	@Override
 	public String toString() {
 		return "UserCollection [username=" + username + ", songname="
-				+ songname + ", singername=" + singername + "]";
+				+ songname + ", singername=" + singername + ", songpath="
+				+ songpath + "]";
 	}
-	public UserCollection(String username, String songname, String singername) {
+	public UserCollection(String username, String songname, String singername,
+			String songpath) {
 		super();
 		this.username = username;
 		this.songname = songname;
 		this.singername = singername;
+		this.songpath = songpath;
 	}
 	public UserCollection() {
 		super();

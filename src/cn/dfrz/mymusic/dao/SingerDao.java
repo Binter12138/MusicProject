@@ -25,4 +25,10 @@ public interface SingerDao {
 	 */
 	public List<Singer> find();
 	
+	/**
+	 * 删除歌手
+	 * @param singername
+	 */
+	public void delSinger(String singername);
+	
 }

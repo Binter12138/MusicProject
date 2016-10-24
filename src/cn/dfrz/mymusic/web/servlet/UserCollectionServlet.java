@@ -32,6 +32,8 @@ public class UserCollectionServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String songname = request.getParameter("songname");
 		String singername = request.getParameter("singername");
+		String songpath = request.getParameter("songpath");
+		
 		if(username.isEmpty())
 		{
 			response.sendRedirect(request.getContextPath()+"/music/login.jsp");
@@ -41,7 +43,7 @@ public class UserCollectionServlet extends HttpServlet {
 			UserCollection collection = service.findSongName(songname,username);
 			if(collection == null )
 			{
-				UserCollection userCollection = new UserCollection(username, songname, singername);
+				UserCollection userCollection = new UserCollection(username, songname, singername, songpath);
 				
 				service.addUserCollection(userCollection);
 				

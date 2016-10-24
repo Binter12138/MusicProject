@@ -19,11 +19,12 @@ public class UserCollectionDaoImpl implements UserCollectionDao{
 		PreparedStatement pstmt = null;
 		try {
 			con = JdbcUtils.getConnection();
-			String sql = "insert into music_collection value(?,?,?)";
+			String sql = "insert into music_collection value(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, uc.getUsername());
 			pstmt.setString(2, uc.getSongname());
 			pstmt.setString(3, uc.getSingername());
+			pstmt.setString(4, uc.getSongpath());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -93,6 +94,7 @@ public class UserCollectionDaoImpl implements UserCollectionDao{
 				UserCollection userCollection = new UserCollection();
 				userCollection.setSongname(rs.getString("songname"));
 				userCollection.setSingername(rs.getString("singername"));
+				userCollection.setSongpath(rs.getString("songpath"));
 				ucList.add(userCollection);
 			}
 			return ucList;

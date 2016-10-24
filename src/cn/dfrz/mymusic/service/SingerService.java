@@ -28,4 +28,10 @@ public class SingerService {
 		return singerDaoImpl.find();
 		
 	}
+	
+	
+	public void delSinger(String singername){
+		
+		singerDaoImpl.delSinger(singername);
+	}
 }

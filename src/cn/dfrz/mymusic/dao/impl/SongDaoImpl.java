@@ -134,7 +134,7 @@ public class SongDaoImpl implements SongDao{
 		ResultSet rs = null;
 		try {
 			con = JdbcUtils.getConnection();
-			String sql = "SELECT songname,singername,songpath,songalbum FROM music_song WHERE songalbum=?";
+			String sql = "SELECT *FROM music_song WHERE songalbum=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, albumname);
 			rs = pstmt.executeQuery();
@@ -162,6 +162,72 @@ public class SongDaoImpl implements SongDao{
 			}
 		}
 		return null;
+	}
+
+	public List<Song> findAllSong() {
+		List<Song> songList = new ArrayList<Song>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			con=JdbcUtils.getConnection();
+			String sql = "select *from music_song";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Song song = new Song();
+				song.setSongname(rs.getString("songname"));
+				song.setSingername(rs.getString("singername"));
+				song.setAlbum(rs.getString("songalbum"));
+				songList.add(song);
+			}
+			return songList;
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con !=null)con.close();
+				if(rs != null)rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	public void delSong(String songname) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		 try {
+			con = JdbcUtils.getConnection();
+			String sql = "delete from music_song where songname=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, songname);
+			pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				if(con != null)con.close();
+				if(pstmt != null)pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	

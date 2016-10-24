@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	public void delete(String username) {
+	public void delUser(String username) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -151,7 +151,7 @@ public class UserDaoImpl implements UserDao {
 		
 		
 	}
-	public List<User> findAll() {
+	public List<User> findAllUser() {
 		List<User> userList = new ArrayList<User>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -162,22 +162,20 @@ public class UserDaoImpl implements UserDao {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			
+		
 			
 			while(rs.next())
 			{
 				User user = new User();
-//				user.setUserId(rs.getString("userid"));
+
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
-				user.setRepassword(rs.getString("repassword"));
+				
 				user.setSex(rs.getString("sex"));
-				user.setBrithday(rs.getString("brithday"));
+				user.setEmail(rs.getString("email"));
 				userList.add(user);
 			}
-//			
-			
-			
+		
 			return userList;
 			
 		} catch (SQLException e) {

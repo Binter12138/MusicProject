@@ -21,7 +21,7 @@ public interface SongDao {
 
 
 	/**
-	 * 查找歌曲
+	 * 查找歌曲是否存在
 	 * @param songName
 	 */
 	public Song findSongName(String songName);
@@ -33,4 +33,17 @@ public interface SongDao {
 	 * @return
 	 */
 	public List<Song> findAlbum(String albumname);
+	
+	/**
+	 * 查找所有歌曲
+	 * @return
+	 */
+	public List<Song> findAllSong();
+	
+	/**
+	 * 删除歌曲
+	 */
+	public void delSong(String songname);
+	
+	
 }

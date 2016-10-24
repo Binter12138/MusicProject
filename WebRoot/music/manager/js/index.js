@@ -28,21 +28,16 @@ $(function(){
 				}
 			})	
 		})*/
-	})
+	});
 	
 	//点击显示隐藏完成菜单和简洁菜单
 	$(function(){
-		$(".menu-oc").click(function(){
-			$(".leftmenu1").animate({left:"-292px"})	;
-			$(".leftmenu2").animate({left:"0px"})
-			$(".rightcon").css("margin-left","52px")
-		})
-		$(".menu-oc1").click(function(){
+		
 			$(".leftmenu1").animate({left:"0px"})	;
 			$(".leftmenu2").animate({left:"-192px"});
 			$(".rightcon").css("margin-left","240px");
-		})		
-	})
+			
+	});
 	
 	//简洁菜单点击效果
 	/*
@@ -72,7 +67,7 @@ $(function(){
 			},function(){
 				$(this).find('.j_menu_list').hide();
 			});
-		})
-	})
+		});
+	});
 	
 	

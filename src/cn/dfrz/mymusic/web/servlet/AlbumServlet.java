@@ -19,7 +19,34 @@ import cn.dfrz.mymusic.service.AlbumService;
 public class AlbumServlet extends HttpServlet {
 
 	AlbumService albumService = new AlbumService();
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
+	
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String methodName = request.getParameter("method");
+		if(methodName.equals("findAlbum"))
+		{
+			findAlbum(request, response);
+		}
+		else if(methodName.equals("addAlbum"))
+		{
+			addAlbum(request, response);
+		}
+		else if(methodName.equals("findAllAlbum"))
+		{
+			findAllAlbum(request, response);
+		}
+		else if(methodName.equals("delAlbum"))
+		{
+			delAlbum(request, response);
+		}
+		
+	}
+	
+	
+	
+	
+	public void findAlbum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -36,7 +63,7 @@ public class AlbumServlet extends HttpServlet {
 	}
 
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void addAlbum(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
@@ -61,6 +88,31 @@ public class AlbumServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void findAllAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		
+		List<Album> albumList = albumService.find();
+		if(albumList.isEmpty())
+		{
+			request.setAttribute("allalbum", "没有找到专辑");
+		}else{
+			request.setAttribute("allalbum", albumList);
+			request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+		}
+	}
+	
+	
+	public void delAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		String albumname = request.getParameter("albumname");
+		albumService.delAlbum(albumname);
+		List<Album> albumList = albumService.find();
+		request.setAttribute("allalbum", albumList);
+		request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
 	}
 
 }

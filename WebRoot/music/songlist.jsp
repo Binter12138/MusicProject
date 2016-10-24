@@ -55,7 +55,7 @@
 		   <!--图标-->
 		 <div class="mod_list_menu">
 		<a href="<c:url value='/music/play.jsp?path=${str.path }&songname=${str.songname}&singername=${str.singername }'/>"><img class="play"src="music/images/play48.png"/></a>
-		<a href="<c:url value='/UserCollectionServlet?method=collection&songname=${str.songname}&singername=${str.singername }&username=${username }'/>"><img class="play" src="music/images/plus49.png"/></a>
+		<a href="<c:url value='/UserCollectionServlet?method=collection&songname=${str.songname}&singername=${str.singername }&username=${username }&songpath=${str.path }'/>"><img class="play" src="music/images/plus49.png"/></a>
 		<a href="#"><img class="play" src="music/images/download.png"/></a>
 		 </div>
 		 <div class="songlist__time">03:05</div>

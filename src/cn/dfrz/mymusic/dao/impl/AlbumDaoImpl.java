@@ -83,4 +83,30 @@ public class AlbumDaoImpl implements AlbumDao{
 		return null;
 	}
 
+	public void delAlbum(String albumname) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "delete from music_ablum where ablum_name=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, albumname);
+			pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				if(con != null)con.close();
+				if(pstmt != null)pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
 }

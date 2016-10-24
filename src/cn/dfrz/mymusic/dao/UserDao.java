@@ -21,7 +21,7 @@ public interface UserDao {
 	 * 删除用户
 	 * @param user
 	 */
-	public void delete(String userid);
+	public void delUser(String username);
 	
 	
 	/**
@@ -31,11 +31,22 @@ public interface UserDao {
 	 */
 	public User findByName(String username);
 	
-	//通过Email来查找用户
+	/**
+	 * 通过Email查询
+	 * @param email
+	 * @return
+	 */
 	public User findByEmail(String email);
 	
 	
-	public List<User> findAll();
+	/**
+	 * 查看用户
+	 * @return
+	 */
+	public List<User> findAllUser();
+	
+	
+	
 	
 	public void updateState(String userid,boolean state);
 	

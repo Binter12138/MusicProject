@@ -32,6 +32,14 @@ public class SongServlet extends HttpServlet {
 		{
 			viewalbumsong(request, response);
 		}
+		else if(methodName.equals("findAllSong"))
+		{
+			findAllSong(request, response);
+		}
+		else if(methodName.equals("delSong"))
+		{
+			delSong(request, response);
+		}
 		
 	}
 	
@@ -69,7 +77,7 @@ public class SongServlet extends HttpServlet {
 			{
 				Song song = CommonUtils.toBean(request.getParameterMap(), Song.class);
 				songService.addsong(song);
-				request.getRequestDispatcher("/music/index.jsp").forward(request, response);
+				request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
 				return;
 			}
 			else{
@@ -93,6 +101,41 @@ public class SongServlet extends HttpServlet {
 				request.setAttribute("message", songList);
 				request.getRequestDispatcher("/music/albumsong.jsp").forward(request, response);
 			}
+	}
+	public void findAllSong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		List<Song> songList = songService.findAllSong();
+		if(songList == null)
+		{
+			request.setAttribute("allSong", "暂时还没有歌曲");
+			request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+		}
+		else
+		{
+			request.setAttribute("allSong", songList);
+			request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+		}
+	}
+	
+	public void delSong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+	
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String songname = request.getParameter("songname");
+		songService.delSong(songname);
+		List<Song> songList = songService.findAllSong();
+		
+			request.setAttribute("allSong", songList);
+			request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+		
+		
+		
+		
 	}
 	
 	

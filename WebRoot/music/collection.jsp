@@ -26,7 +26,7 @@
 		<ul>
 			<li>
 				<div>
-					<center><img src="music/images/1.png"/></center>
+					<center><img src="music/images/bg.jpg"/></center>
 					<center class="myname">${username }</center>
 					<center><a class="frame_singer" href="javascript:;">关注</a>|<a class="frame_song" href="javascript:;">收藏</a></center>
 				</div>
@@ -46,9 +46,11 @@
 				<tr>
 				<th>1</th>
 				<td>
-					<a href="javascript:;">${ss.songname }</a>
+					<a href="<c:url value='/music/play.jsp?path=${ss.songpath }&songname=${ss.songname}&singername=${ss.singername }'/>">${ss.songname }</a>
 				</td>
-				<td><a href="javascript:;">${ss.singername }</a></td>
+				<td><a href="<c:url value='/SongServlet?method=viewSong&singerName=${ss.singername }'/>">${ss.singername }</a></td>
+				 
+			
 				<th>xxxx</th>
 			</tr>
 			

@@ -38,4 +38,23 @@ public class SongService {
 		return songList;
 		
 	}
+	
+	
+	/**
+	 * 查找所有的歌曲
+	 * @return
+	 */
+	public List<Song> findAllSong(){
+		
+		List<Song> songList = songDaoImpl.findAllSong();
+		if(songList == null)return null;
+		return songList;
+				
+	}
+	
+	
+	public void delSong(String songname){
+		
+		songDaoImpl.delSong(songname);
+	}
 }

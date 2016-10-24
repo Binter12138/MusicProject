@@ -22,4 +22,10 @@ public class AlbumService {
 		
 		
 	}
+	
+	
+	public void delAlbum(String albumname)
+	{
+		albumDaoImpl.delAlbum(albumname);
+	}
 }

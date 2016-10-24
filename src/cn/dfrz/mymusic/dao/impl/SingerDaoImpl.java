@@ -107,6 +107,7 @@ public class SingerDaoImpl implements SingerDao{
 				singer.setSingername(rs.getString("singername"));
 				singer.setSingerimage(rs.getString("singerimage"));
 				singer.setSingerinfo(rs.getString("singerinfo"));
+				singer.setSex(rs.getString("sex"));
 				singerList.add(singer);
 			}
 			return singerList;
@@ -127,6 +128,31 @@ public class SingerDaoImpl implements SingerDao{
 		
 		
 		return null;
+	}
+
+	public void delSinger(String singername) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "delete from music_singer where singername=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, singername);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(con != null)con.close();
+				if(pstmt != null)pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
