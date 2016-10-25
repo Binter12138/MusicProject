@@ -46,7 +46,7 @@
 				<tr>
 				<th>1</th>
 				<td>
-					<a href="<c:url value='/music/play.jsp?path=${ss.songpath }&songname=${ss.songname}&singername=${ss.singername }'/>">${ss.songname }</a>
+					<a href="<c:url value='/SingerServlet?method=findsinger&path=${ss.songpath }&singername=${ss.singername }&songname=${ss.songname}'/>">${ss.songname }</a>
 				</td>
 				<td><a href="<c:url value='/SongServlet?method=viewSong&singerName=${ss.singername }'/>">${ss.singername }</a></td>
 				 

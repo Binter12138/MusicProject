@@ -58,6 +58,7 @@ body{margin:0;}
   	String p = request.getParameter("path");
   String n = request.getParameter("songname");
   String sg = request.getParameter("singername");
+  
   	
   %>
 <div class="Music">
@@ -67,7 +68,7 @@ body{margin:0;}
     <div class="MusicPlayBox">
       <h3 class="title"><%=n %></h3>
       <p class="name"><%=sg %></p>
-      <div class="MusicPic"> <img class="MusicPicName PicNameRotate" src="music/images/yifan.jpg" /> <img class="MusicPicButton" src="music/images/pause.png" /> </div>
+      <div class="MusicPic"> <img class="MusicPicName PicNameRotate" src="music/files/${singerimage }" /> <img class="MusicPicButton" src="music/images/pause.png" /> </div>
       <div class="Prev icon"></div>
       <div class="Next icon"></div>
     </div>

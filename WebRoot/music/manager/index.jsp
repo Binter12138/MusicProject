@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		#aaa{
 			margin-top:50px;
-			padding-left:300px;
+			padding-left:400px;
 		
 		}
 		.table_list input{
@@ -50,6 +50,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			background: white;
 			
 			}
+			.table_user{
+				margin-left:-100px;
+				border-collapse:collapse;
+			
+			}
+			.table_user th{
+		border:1px solid #d8d8d8;
+		padding:5px 0;
+		}
+			.table_user td{
+		width:200px;
+		text-align:center;
+		border:1px solid #d8d8d8;
+		padding:5px 0;
+		}
 				
 	
 	</style>
@@ -160,7 +175,7 @@ var a=1;
 			<tr>
 				<th>歌手</th>
 				<th>性别</th>
-				<th>信息</th>
+				
 				<th>操作</th>	
 			</tr>
 			</c:forEach>
@@ -169,7 +184,7 @@ var a=1;
 		<tr>
 			<td>${als.singername }</td>
 			<td>${als.sex }</td>
-			<td>${als.singerinfo }</td>
+			
 			<td><a href="<c:url value='/SingerServlet?method=delSinger&singername=${als.singername }'/>">删除</a></td>
 		</tr>
 		</c:forEach>
@@ -195,7 +210,7 @@ var a=1;
 	
 	</table>
 	
-	<table class="table_list">
+	<table class="table_user">
 		<c:forEach  items="${allUser }" begin="0" end="0">
 			<tr>
 				<th>用户名</th>

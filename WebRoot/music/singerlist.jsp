@@ -34,7 +34,7 @@
 					
 					<center><img src="<c:url value='/music/files/${s.singerimage }'/>"/></center>
 					
-					<center><h3><a id="sname" href="<c:url value='/SongServlet?method=viewSong&singerName=${s.singername }&singerimage=${s.singerimage }'/>">${s.singername }</a></h3></center>
+					<center><h3><a id="sname" href="<c:url value='/SongServlet?method=viewSong&singerName=${s.singername }&image=${s.singerimage }'/>">${s.singername }</a></h3></center>
 					
 				</div>
 				

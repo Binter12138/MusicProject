@@ -40,6 +40,10 @@ public class SingerServlet extends HttpServlet {
 			{
 				delSinger(request, response);
 			}
+			else if(methodName.equals("findsinger"))
+			{
+				findsinger(request, response);
+			}
 	}
 	public void viewSinger(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -137,6 +141,18 @@ public class SingerServlet extends HttpServlet {
 		
 		request.setAttribute("allsinger", singerList);
 		request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+		
+	}
+	
+	public void findsinger(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String singerName = request.getParameter("singername");
+		Singer singer = singerService.findByName(singerName);
+		request.setAttribute("singerimage", singer.getSingerimage());
+		request.getRequestDispatcher("/music/play.jsp").forward(request, response);
 		
 	}
 	

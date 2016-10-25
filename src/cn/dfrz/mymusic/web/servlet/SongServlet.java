@@ -40,6 +40,10 @@ public class SongServlet extends HttpServlet {
 		{
 			delSong(request, response);
 		}
+		else if(methodName.equals("findSong"))
+		{
+			findSong(request, response);
+		}
 		
 	}
 	
@@ -52,6 +56,7 @@ public class SongServlet extends HttpServlet {
 		//get提交处理乱码问题
 		
 		String singerName=request.getParameter("singerName");
+//		String image = request.getParameter("image");
 		List<Song> songList = songService.findsong(singerName);
 		if(songList.isEmpty())
 		{
@@ -62,6 +67,7 @@ public class SongServlet extends HttpServlet {
 			
 			request.setAttribute("songname", songList);
 			request.setAttribute("singern", singerName);
+//			request.setAttribute("image", image);
 			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
 		}
 	
@@ -135,6 +141,36 @@ public class SongServlet extends HttpServlet {
 		
 		
 		
+		
+	}
+	
+	public void findSong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		//get提交处理乱码问题
+		
+		String singerName=request.getParameter("singerName");
+		
+		SingerService singerService = new SingerService();
+		Singer singer = singerService.findByName(singerName);
+		
+		List<Song> songList = songService.findsong(singerName);
+		if(songList.isEmpty())
+		{
+			request.setAttribute("song", "没有找到");
+			request.getRequestDispatcher("/music/viewsinger.jsp").forward(request, response);
+		}
+		else {
+			
+			request.setAttribute("songname", songList);
+			request.setAttribute("singern", singerName);
+			request.setAttribute("image", singer.getSingerimage());
+			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
+		}
+	
 		
 	}
 	
