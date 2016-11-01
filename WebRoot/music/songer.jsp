@@ -8,7 +8,7 @@
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'songer.jsp' starting page</title>
+    <title>${singern }</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -17,19 +17,21 @@
 	<meta http-equiv="description" content="This is my page">
 	<link href="music/css/header.css" type="text/css" rel="Stylesheet" />
 	<link href="music/css/songer.css" type="text/css" rel="Stylesheet" />
-
+<%
+	String singerimage = request.getParameter("image");
+%>
   </head>
   
   <body>
     <div id="songer_model">
 	<div class="songer_header">
-		<img src="music/images/1.png"/>
+		<img src="music/files/<%=singerimage%>"/>
 		<div class="songer_right">
 		
 			<h1>${singern }</h1>
-			<c:forEach items="${singerinfo }" var="sin">
-				<p>简介:${sin.singerinfo }</p>
-			</c:forEach>
+		
+				<p>简介:${singerinfo }</p>
+			
 			
 			
 			<a href="javascript:;" class="playall">
@@ -49,8 +51,8 @@
 		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<th>序号</th>
-				<td>歌曲</td>
-				<td>专辑</td>
+				<th>歌曲</th>
+				<th>专辑</th>
 				<th>时长</th>
 			</tr>
 			<c:forEach items="${songname }" var="str">
@@ -58,24 +60,21 @@
 				<th>1</th>
 				<td>
 					<a href="javascript:;">${str.songname }</a>
-					
-				</td>
-				<td><a href="javascript:;">${str.album }</a></td>
-				<th></th>
-			 </c:forEach>
-			<tr>
-				<th>2</th>
-				<td>
-					<a href="javascript:;">xxxx</a>
 					<div class="slogo">
-						<a href="javascript:;"><div class="slogo1"></div></a>
-						<a href="javascript:;"><div class="slogo2"></div></a>
-						<a href="javascript:;"><div class="slogo3"></div></a>
+						<a href="<c:url value='/SingerServlet?method=findsinger&path=${str.path }&songname=${str.songname}&singername=${str.singername }'/>">
+							<div class="slogo1"></div>
+						</a>
+						<a href="<c:url value='/UserCollectionServlet?method=collection&songname=${str.songname}&singername=${str.singername }&username=${username }&songpath=${str.path }'/>">
+							<div class="slogo2"></div>
+						</a>
+						<a href="javascript:;">
+							<div class="slogo3"></div>
+						</a>
 					</div>
 				</td>
-				<td><a href="javascript:;">xxxx</a></td>
-				<th>xxxx</th>
-			</tr>
+				<td><a href="javascript:;">${str.album }</a></td>
+				<td></td>
+			 </c:forEach>
 		</table>
 	</div>
 </div>

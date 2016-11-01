@@ -56,7 +56,9 @@ public class UserService {
 	public User login(User form)
 	
 	{
+		
 		User user = userDaoImpl.findByName(form.getUsername());
+		
 		if(user == null)return null;
 		if(!user.getPassword().equals(form.getPassword()))return null;
 		return user;

@@ -173,6 +173,7 @@ public class UserDaoImpl implements UserDao {
 				
 				user.setSex(rs.getString("sex"));
 				user.setEmail(rs.getString("email"));
+				user.setState(rs.getBoolean("state"));
 				userList.add(user);
 			}
 		

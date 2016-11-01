@@ -46,4 +46,19 @@ public interface SongDao {
 	public void delSong(String songname);
 	
 	
+	/**
+	 * 按照歌曲的热度进行排行
+	 * @return
+	 */
+	public List<Song> rankSong();
+	
+	
+	/**
+	 * 修改歌曲
+	 * @param songid
+	 * @param songname
+	 * @param singername
+	 * @param albumname
+	 */
+	public void modifySong(int songid,String songname,String singername,String albumname);
 }

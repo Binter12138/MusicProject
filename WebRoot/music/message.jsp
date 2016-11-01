@@ -24,16 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="<c:url value='/UserCollectionServlet?method=findUserCollection'/>">我的收藏</a>
-    <c:forEach items="${singername }" var="s">
-    	${s.singername }
-    	<img src="<c:url value='/music/files/${s.singerimage }'/>"/>
-    	
-    </c:forEach>
-    <c:forEach items="${message }" var="m">
-    	${m.songname } ${m.singername }<br/>
-    	
-    </c:forEach>
+    ${mes }
     
   </body>
 </html>

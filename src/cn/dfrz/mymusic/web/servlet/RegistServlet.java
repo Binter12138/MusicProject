@@ -143,7 +143,7 @@ public class RegistServlet extends HttpServlet {
 						
 				        // 设置邮件标题
 				        message.setSubject("邮箱激活");
-				        message.setContent("<h1><a href='http://localhost:8080/zz/RegistServlet?action=active'>点击完成激活</a></h1>", "text/html;charset=gbk");
+				        message.setContent("<h1><a href='http://localhost:8080/"+request.getContextPath()+"/RegistServlet?action=active&userid="+form.getUserid()+"'>点击完成激活</a></h1>", "text/html;charset=gbk");
 //				        message.setText("cccc");
 				        // 发送邮件
 				        Transport.send(message);
@@ -183,8 +183,8 @@ public class RegistServlet extends HttpServlet {
 	public void active(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException
 	{
-		User user = new User();
-		userService.active(user.getUserid());
+		String userid = request.getParameter("userid");
+		userService.active(userid);
 		request.setAttribute("mes", "激活成功");
 		request.getRequestDispatcher("/music/message.jsp").forward(request, response);
 	}

@@ -31,4 +31,7 @@ public interface SingerDao {
 	 */
 	public void delSinger(String singername);
 	
+	
+	public void modifySinger(String singername,String sex,int singerattention,int singerid);
+	
 }

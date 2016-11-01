@@ -39,6 +39,9 @@ public class AlbumServlet extends HttpServlet {
 		else if(methodName.equals("delAlbum"))
 		{
 			delAlbum(request, response);
+		}else if(methodName.equals("modifyAlbum"))
+		{
+			modifyAlbum(request, response);
 		}
 		
 	}
@@ -82,7 +85,8 @@ public class AlbumServlet extends HttpServlet {
 			fileItemList.get(2).write(file);
 			Album album = new Album(albumname, singername, albunimage);;
 			albumService.addAlbum(album);
-			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/music/manager/index.jsp");
+//			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,6 +117,21 @@ public class AlbumServlet extends HttpServlet {
 		List<Album> albumList = albumService.find();
 		request.setAttribute("allalbum", albumList);
 		request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+	}
+	
+	public void modifyAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String albumname = request.getParameter("albumname");
+		String singername = request.getParameter("singername");
+		String albumName = request.getParameter("albumName");
+		String singerName = request.getParameter("singerName");
+		System.out.println(albumname);
+		System.out.println(singername);
+		System.out.println(albumName);
+		System.out.println(singerName);
+		
 	}
 
 }

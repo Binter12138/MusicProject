@@ -33,8 +33,14 @@ public class LoginServlet extends HttpServlet {
 		User user = userService.login(form);
 		
 		if(user == null){
+			
 			request.setAttribute("message", "用户名或密码错误");
 			request.setAttribute("error", form);
+			request.getRequestDispatcher("/music/login.jsp").forward(request, response);
+		}
+		else if(!user.isState())
+		{
+			request.setAttribute("message", "您还没有激活");
 			request.getRequestDispatcher("/music/login.jsp").forward(request, response);
 		}
 		else {
@@ -44,7 +50,6 @@ public class LoginServlet extends HttpServlet {
 //			request.getRequestDispatcher("/music/index.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath()+"/music/index.jsp");
 		}
-		
 		
 	
 	}

@@ -1,4 +1,6 @@
 $(function(){
+	
+	
 	$(".choose li>a").hover(function() {
 			$(this).css("font-weight","900");
 		}, function() {
@@ -30,11 +32,12 @@ $(function(){
 	});
 	function choose(i){
 		$(".slide li").each(function(index){
-			$(this).children().children().attr("src","music/images/"+i[index]+".png")
+			$(this).children().children().attr("src","music/images/"+i[index]+".jpg");
 		
-		})
+		});
 	
 	}
+	
 	
 	
 	//木马
@@ -49,9 +52,9 @@ $(function(){
 			clearInterval(timer);
 			timer = setInterval(function(){
 				move(true);
-			},3000)
+			},3000);
 		$(this).children(".arrow").stop().fadeOut();
-	})
+	});
 	var json =[
 	{
 		width:400,//1
@@ -121,7 +124,7 @@ $(function(){
 			
 			lis.eq(i).css("zIndex",json[i].z).stop().animate(value,function(){flag=true});
 			
-		})
+		});
 	}
 	timer=setInterval(function(){
 		move(true);
@@ -129,7 +132,7 @@ $(function(){
 	
 	//手风琴
 	$(".flash .con ul li").click(function(){
-		$(this).stop().animate({width:"970px"},500).siblings().stop().animate({width:"46px"},500)
+		$(this).stop().animate({width:"970px"},500).siblings().stop().animate({width:"46px"},500);
 	});
 	
 	//表格
@@ -146,30 +149,59 @@ $(function(){
 	
 	
 	$(".cs1").click(function(){
-		var i=[5,6,7,8,9,10,11,12];
-		changing(i);
+		var i=[24,28,47,26,39,40,51,22];
+		var c=["李荣浩","薛之谦","花澤香菜","杨宗纬","查理","蕾哈娜","久石譲","张碧晨"];
+		var d=["模特","绅士","しえてナウカ、夢みるペチカ","初爱","See You Again","Only Girl","天空之城","It's Love"];
+		changing(i);chang(c);changsong(d);
 	});
+	//内地
 	$(".cs2").click(function(){
-		var i=[1,2,3,4,5,6,7,8];
-		changing(i);
+		var i=[21,22,23,24,25,26,27,28];
+		var c=["五月天","张碧晨","范玮琪","李荣浩","庄心妍","杨宗纬","许嵩","薛之谦"];
+		var d=["伤信的人别听慢歌","It's Love","最初的梦想","模特","孤单坠爱","初爱","素颜","绅士"];
+		changing(i);chang(c);changsong(d);
 	});
+	//韩国
 	$(".cs3").click(function(){
-		var i=[3,6,2,8,9,10,15,13];
-		changing(i);
+		var i=[29,30,31,32,33,34,35,36];
+		var c=["权志龙","胜利","孝琳","현아 (泫雅)","东永裴","宋旻浩","에일리 (Ailee)","백지영 (白智英)"];
+		var d=["Crooked","할 말 있어요","Love Like This","안녕","눈,코,입","BODY","Home","총 맞은 것처럼"];
+		changing(i);chang(c);changsong(d);
+		
 	});
+	//欧美
 	$(".cs4").click(function(){
-		var i=[14,15,16,17,18,19,20,21];
-		changing(i);
+		var i=[37,38,39,40,41,42,43,44];
+		var c=["Tez Cadey","阿黛尔","查理","蕾哈娜","珠儿","Katy Perry","Taylor Swift","Lenka"];
+		var d=["Seve","Rolling In The Deep","See You Again","Only Girl","Stand","Rise","Blank Space","Trouble Is a Friend"];
+		changing(i);chang(c);changsong(d);
 	});
+	//日本
 	$(".cs5").click(function(){
-		var i=[14,16,18,5,7,9,1,2];
-		changing(i);
+		var i=[45,46,47,48,49,50,51,52];
+		var c=["滨崎步","倉木麻衣","花澤香菜","Dj Okawari","北嶋彻","Aimer","久石譲","Piko-Taro"];
+		var d=["MY ALL","Time after time","sweets parade","Sound Of Silence","unravel","Brave Shine","天空之城","Pen Pineapple Apple Pen"];
+		changing(i);chang(c);changsong(d);
 	});
-	
+	//跟换热门歌曲图片
 	function changing(i){
 		$(".table dt").each(function(index){
-			$(this).children().children().attr("src","music/images/"+i[index]+".png");
-		})
+			$(this).children().children().attr("src","music/images/"+i[index]+".jpg");
+		});
+	
+	}
+	//跟换歌手名
+	function chang(c){
+		$(".musicsinger").each(function(index){
+			$(this).html(c[index]);
+		});
+	
+	}
+	//跟换歌曲名
+	function changsong(d){
+		$(".musicsong").each(function(index){
+			$(this).html(d[index]);
+		});
 	
 	}
 	$(".table dt").hover(function(){
@@ -180,16 +212,16 @@ $(function(){
 		$(".table dl:even>dd").css("background","#000");
 		$(this).find(".txt").stop().animate({height:"0px"},200);
 
-	})
+	});
 	
 	$(".table dd").hover(function(){
 		$(this).css("background","#31c27c");
 	},function(){
 		$(".table dl:odd>dd").css("background","#333");
 		$(".table dl:even>dd").css("background","#000");
-	})
+	});
 	
 	
 	
 	
-})
+});

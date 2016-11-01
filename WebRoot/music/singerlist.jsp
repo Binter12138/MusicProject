@@ -32,7 +32,7 @@
 				<div>
 
 					
-					<center><img src="<c:url value='/music/files/${s.singerimage }'/>"/></center>
+					<center><a href="<c:url value='/SongServlet?method=viewSong&singerName=${s.singername }&image=${s.singerimage }'/>"><img src="<c:url value='/music/files/${s.singerimage }'/>"/></a></center>
 					
 					<center><h3><a id="sname" href="<c:url value='/SongServlet?method=viewSong&singerName=${s.singername }&image=${s.singerimage }'/>">${s.singername }</a></h3></center>
 					
@@ -41,14 +41,7 @@
 			</dd>					
 			</c:forEach>
 		</dl>
-	<c:forEach items="${singername }" var="c"  begin="10" end="100">
-		<dl class="singer_list_txt">
-		
-				
-			<dd class="singer_text"><a href="" >${c.singername }</a></dd>					
-			
-		</dl>
-	</c:forEach>
+
 
 		<center class="bottom_foot">
 			<a href="javascript:;" >1</a>

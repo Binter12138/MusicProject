@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<li><a href="<c:url value='/music/index.jsp'/>" class="header_a">首页</a></li>
 		<li><a href="<c:url value='/SingerServlet?method=viewSinger'/>" class="header_a">歌手</a></li>
 		<li><a href="<c:url value='/AlbumServlet?method=findAlbum'/>" class="header_a">专辑</a></li>
-		<li><a href="<c:url value='/music/ranking.jsp'/>" class="header_a">排行榜</a></li>
+		<li><a href="<c:url value='/SongServlet?method=rankSong'/>" class="header_a">排行榜</a></li>
 	</ul>
 </div>
   </body>

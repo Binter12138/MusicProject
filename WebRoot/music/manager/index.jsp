@@ -88,6 +88,7 @@ var a=1;
 });
 </script>
 
+
   </head>
   
   <body>
@@ -165,7 +166,8 @@ var a=1;
 				<td><input type="text" name="input1" value="${as.songname }" disabled="true" class="q"/></td>
 				<td><input type="text" name="input1" value="${as.singername }" disabled="true" /></td>
 				<td><input type="text" name="input1" value="${as.album }" disabled="true" /></td>
-				<td><a href="<c:url value='/SongServlet?method=delSong&songname=${as.songname }'/>">删除</a>|<a href="JavaScript:;" class="change">修改</a></td>	
+				<td><a href="<c:url value='/SongServlet?method=delSong&songname=${as.songname }'/>">删除</a>|
+				<a href="<c:url value='/music/manager/modify_song.jsp?songname=${as.songname }&singername=${as.singername }&albumname=${as.album }&songid=${as.songid }'/>">修改</a></td>	
 			</tr>
 			</c:forEach>
 		  </table>
@@ -175,7 +177,7 @@ var a=1;
 			<tr>
 				<th>歌手</th>
 				<th>性别</th>
-				
+				<th>歌手热度</th>
 				<th>操作</th>	
 			</tr>
 			</c:forEach>
@@ -184,8 +186,11 @@ var a=1;
 		<tr>
 			<td>${als.singername }</td>
 			<td>${als.sex }</td>
+			<td>${als.singerattention }</td>
+			<td><a href="<c:url value='/SingerServlet?method=delSinger&singername=${als.singername }'/>">删除</a>|
+				<a href="<c:url value='/music/manager/modify_singer.jsp?singername=${als.singername }&sex=${als.sex }&singerattention=${als.singerattention }&singerid=${als.singerid }'/>">修改</a>
+			</td>
 			
-			<td><a href="<c:url value='/SingerServlet?method=delSinger&singername=${als.singername }'/>">删除</a></td>
 		</tr>
 		</c:forEach>
 	
@@ -203,7 +208,8 @@ var a=1;
 				<tr>
 					<td>${aa.albumname }</td>
 					<td>${aa.singername }</td>
-					<td><a href="<c:url value='/AlbumServlet?method=delAlbum&albumname=${aa.albumname }'/>">删除</a>|<a href="#">修改</a></td>
+					<td><a href="<c:url value='/AlbumServlet?method=delAlbum&albumname=${aa.albumname }'/>">删除</a>|
+						<a href="<c:url value='/music/manager/modify_album.jsp?albumname=${aa.albumname }&singername=${aa.singername }'/>">修改</a></td>
 				
 				</tr>
 			</c:forEach>
@@ -217,6 +223,7 @@ var a=1;
 				<th>密码</th>
 				<th>性别</th>	
 				<th>邮箱</th>
+				<th>状态</th>
 				<th>操作</th>
 			</tr>
 		</c:forEach>
@@ -226,7 +233,14 @@ var a=1;
 				<td>${au.password }</td>
 				<td>${au.sex }</td>
 				<td>${au.email }</td>
-				<td><a href="<c:url value='/UserServlet?method=delUser&username=${au.username }'/>">删除</a>|<a href="#">修改</a></td>
+				<c:choose>
+					<c:when test="${au.state }"><td>已激活</td></c:when>
+					<c:otherwise><td>未激活</td></c:otherwise>
+				
+				</c:choose>
+				<td><a href="<c:url value='/UserServlet?method=delUser&username=${au.username }'/>">删除</a>
+				
+				</td>
 			
 			</tr>
 		

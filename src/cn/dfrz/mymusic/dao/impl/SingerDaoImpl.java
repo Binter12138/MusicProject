@@ -104,9 +104,11 @@ public class SingerDaoImpl implements SingerDao{
 			while(rs.next())
 			{
 				Singer singer = new Singer();
+				singer.setSingerid(rs.getInt("singerid"));
 				singer.setSingername(rs.getString("singername"));
 				singer.setSingerimage(rs.getString("singerimage"));
 				singer.setSingerinfo(rs.getString("singerinfo"));
+				singer.setSingerattention(rs.getInt("singerattention"));
 				singer.setSex(rs.getString("sex"));
 				singerList.add(singer);
 			}
@@ -153,6 +155,25 @@ public class SingerDaoImpl implements SingerDao{
 			}
 		}
 		
+	}
+
+	public void modifySinger(String singername, String sex, int singerattention,int singerid) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "update music_singer set singername=?,sex=?,singerattention=? where singerid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, singername);
+			pstmt.setString(2, sex);
+			pstmt.setInt(3, singerattention);
+			pstmt.setInt(4, singerid);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

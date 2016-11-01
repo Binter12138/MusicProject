@@ -102,10 +102,10 @@ $(function(){
         
     });
 	$(".Prev").click(function(){
-		$("audio").attr("src","http://59.56.30.96/m10.music.126.net/20161009205852/1c9aa4be9bfafa378503f31d32c36103/ymusic/5e8c/9fbd/460a/63af292aec1f060e9a1c23a8c1bbff95.mp3");
+		$("audio").attr("src","<%=p%>");
 	});
 	$(".Next").click(function(){
-		$("audio").attr("src","http://59.56.30.108/m10.music.126.net/20161009205947/5d7cb1e74dac158e1cb19df2acb5938d/ymusic/3caa/2bb1/b665/afa5abf4fbbe61a9528cf9ec1faca960.mp3");
+		$("audio").attr("src","<%=p%>");
 		
 	});
 	$(".Next").click(function(){

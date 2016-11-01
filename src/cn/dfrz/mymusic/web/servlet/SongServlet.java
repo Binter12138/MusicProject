@@ -44,7 +44,14 @@ public class SongServlet extends HttpServlet {
 		{
 			findSong(request, response);
 		}
-		
+		else if(methodName.equals("rankSong"))
+		{
+			rankSong(request, response);
+		}
+		else if(methodName.equals("modifySong"))
+		{
+			modifySong(request, response);
+		}
 	}
 	
 	
@@ -57,6 +64,8 @@ public class SongServlet extends HttpServlet {
 		
 		String singerName=request.getParameter("singerName");
 //		String image = request.getParameter("image");
+//		SingerService singerService = new SingerService();
+//		Singer singer = singerService.findByName(singerName);
 		List<Song> songList = songService.findsong(singerName);
 		if(songList.isEmpty())
 		{
@@ -67,7 +76,7 @@ public class SongServlet extends HttpServlet {
 			
 			request.setAttribute("songname", songList);
 			request.setAttribute("singern", singerName);
-//			request.setAttribute("image", image);
+//			request.setAttribute("singerinfo", singer.getSingerinfo());
 			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
 		}
 	
@@ -83,7 +92,8 @@ public class SongServlet extends HttpServlet {
 			{
 				Song song = CommonUtils.toBean(request.getParameterMap(), Song.class);
 				songService.addsong(song);
-				request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/music/manager/index.jsp");
+//				request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
 				return;
 			}
 			else{
@@ -170,10 +180,40 @@ public class SongServlet extends HttpServlet {
 			request.setAttribute("image", singer.getSingerimage());
 			request.getRequestDispatcher("/music/songlist.jsp").forward(request, response);
 		}
-	
+
+	}
+
+	public void rankSong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		List<Song> songList = songService.rankSong();
+		 if(songList == null)
+		 {
+			 request.setAttribute("rankSong", "还没有排行的歌曲");
+			 request.getRequestDispatcher("/music/ranking.jsp").forward(request, response);
+			 
+		 }else{
+			 request.setAttribute("rankSong", songList);
+			 request.getRequestDispatcher("/music/ranking.jsp").forward(request, response);
+		 }
 		
 	}
 	
+	public void modifySong(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String songid = request.getParameter("songid");
+		String songname = request.getParameter("songname");
+		String singername = request.getParameter("singername");
+		String albumname = request.getParameter("albumname");
+		int songId = Integer.parseInt(songid);
+		songService.modifySong(songId, songname, singername, albumname);
+		response.sendRedirect(request.getContextPath()+"/music/manager/index.jsp");
+		
+	}
 	
 
 }

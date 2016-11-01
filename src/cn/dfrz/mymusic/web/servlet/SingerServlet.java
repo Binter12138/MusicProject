@@ -44,6 +44,10 @@ public class SingerServlet extends HttpServlet {
 			{
 				findsinger(request, response);
 			}
+			else if(methodName.equals("modifySinger"))
+			{
+				modifySinger(request, response);
+			}
 	}
 	public void viewSinger(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -81,9 +85,11 @@ public class SingerServlet extends HttpServlet {
 			String singerregion = fileItemList.get(3).getString("utf-8");
 			String singerattention = fileItemList.get(4).getString("utf-8");
 			
+			//把String转换成int
+			int attention = Integer.parseInt(singerattention);
+			
 			FileItem f5 = fileItemList.get(5);
 			
-
 			String root = this.getServletContext().getRealPath("/music/files");
 			String singerimage = f5.getName();//获取上传的文件名称
 			File file = new File(root,singerimage);
@@ -92,9 +98,10 @@ public class SingerServlet extends HttpServlet {
 			Singer singern = singerService.findByName(singername);
 			if(singern == null)
 			{
-				Singer singer = new Singer(1, singername, sex, singerinfo, singerregion, 100, singerimage);
+				Singer singer = new Singer(1, singername, sex, singerinfo, singerregion, attention, singerimage);
 				singerService.addSinger(singer);
-				request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/music/manager/index.jsp");
+//				request.getRequestDispatcher("/music/manager/index.jsp").forward(request, response);
 				return;
 			}else{
 				request.setAttribute("addsingername", "该歌手已经存在");
@@ -102,7 +109,6 @@ public class SingerServlet extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -154,6 +160,20 @@ public class SingerServlet extends HttpServlet {
 		request.setAttribute("singerimage", singer.getSingerimage());
 		request.getRequestDispatcher("/music/play.jsp").forward(request, response);
 		
+	}
+	public void modifySinger(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		String singername = request.getParameter("singername");
+		String sex = request.getParameter("sex");
+		String singerattention = request.getParameter("singerattention");
+		String singerid = request.getParameter("singerid");
+	
+		int singerAttention = Integer.parseInt(singerattention);
+		int singerId = Integer.parseInt(singerid);
+		singerService.modifySinger(singername, sex, singerAttention, singerId);
+		response.sendRedirect(request.getContextPath()+"/music/manager/index.jsp");
 	}
 	
 	

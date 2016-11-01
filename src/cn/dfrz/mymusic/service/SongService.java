@@ -18,6 +18,7 @@ public class SongService {
 		
 	}
 	
+	
 
 	public void addsong(Song song)
 	{
@@ -52,9 +53,30 @@ public class SongService {
 				
 	}
 	
+	/**
+	 * 按照歌曲的热度进行排行
+	 * @return
+	 */
+	public List<Song> rankSong()
+	{
+		List<Song> songList = songDaoImpl.rankSong();
+		if(songList == null)return null;
+		return songList;
+		
+		
+	}
 	
+	/**
+	 * 按歌曲的名字删除歌曲
+	 * @param songname
+	 */
 	public void delSong(String songname){
 		
 		songDaoImpl.delSong(songname);
+	}
+	
+	
+	public void modifySong(int songid,String songname,String singername,String albumname){
+		songDaoImpl.modifySong(songid, songname, singername, albumname);
 	}
 }

@@ -5,6 +5,8 @@ public class Album {
 	private String albumname;
 	private String singername;
 	private String albunimage;
+	
+	
 	public String getAlbumname() {
 		return albumname;
 	}

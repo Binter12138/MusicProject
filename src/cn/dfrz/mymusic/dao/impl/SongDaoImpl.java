@@ -179,6 +179,7 @@ public class SongDaoImpl implements SongDao{
 			while(rs.next())
 			{
 				Song song = new Song();
+				song.setSongid(rs.getInt("songid"));
 				song.setSongname(rs.getString("songname"));
 				song.setSingername(rs.getString("singername"));
 				song.setAlbum(rs.getString("songalbum"));
@@ -228,6 +229,67 @@ public class SongDaoImpl implements SongDao{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public List<Song> rankSong() {
+		
+		List<Song> songList = new ArrayList<Song>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			String sql = "SELECT *FROM music_song GROUP BY  songheat DESC ";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				Song song = new Song();
+				song.setSongname(rs.getString("songname"));
+				song.setSingername(rs.getString("singername"));
+				song.setAlbum(rs.getString("songalbum"));
+				song.setPath(rs.getString("songpath"));
+				songList.add(song);
+			}
+			return songList;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if(pstmt != null)pstmt.close();
+				if(con !=null)con.close();
+				if(rs != null)rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return null;
+	}
+
+	public void modifySong(int songid, String songname, String singername,
+			String albumname) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				con =JdbcUtils.getConnection();
+				String sql = "update music_song set songname=?,singername=?,songalbum=? where songid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, songname);
+				pstmt.setString(2, singername);
+				pstmt.setString(3, albumname);
+				pstmt.setInt(4, songid);
+				pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		
 	}
 	
 	

@@ -84,6 +84,35 @@
 .song_table td a{
 	color:#423a3a;
 }
+.song_table .slogo{
+	width:135px;
+	height:40px;
+	position:absolute;
+	background:url(../images/background1.jpg) -13px -87px;
+	margin: -29px 0 0 360px;
+	display: none
+}
+.song_table .slogo1,.song_table .slogo2,.song_table .slogo3{
+	width:45px;
+	height:40px;
+	position:absolute;
+	opacity:0;
+	
+}
+.song_table .slogo1{
+	background:url(../images/background1.jpg) -13px -150px;;
+	
+}
+.song_table .slogo2{
+	background:url(../images/background1.jpg) -60px -151px;;
+	margin-left: 45px;
+
+}
+.song_table .slogo3{
+	background:url(../images/background1.jpg) -103px -153px;;
+	margin-left:90px;
+
+}
 .song_table tr th{
 	font-weight:100;
 	text-align:left;

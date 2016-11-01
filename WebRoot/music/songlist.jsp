@@ -7,7 +7,7 @@
   <head>
     <base href="<%=basePath%>">
     
-    <title>MyMusic查找的页面</title>
+    <title>${singern }</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

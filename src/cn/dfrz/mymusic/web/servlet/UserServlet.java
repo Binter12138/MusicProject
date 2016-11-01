@@ -55,6 +55,7 @@ public class UserServlet extends HttpServlet {
 		
 		response.setContentType("text/html;charset=utf-8");
 		String username = request.getParameter("username");
+		
 		userService.delUser(username);
 		List<User> userList = userService.findAllUser();
 		request.setAttribute("allUser", userList);
